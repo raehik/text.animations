@@ -18,7 +18,8 @@ public class Speaker {
 	public void sayNew(String line) {
 		for (int i = 0; i < line.length(); i++) {
 			int nextChar = findPause(line.substring(i));
-			if (nextChar == 0) { sayChar(line.charAt(i)); }
+			if (nextChar == 0) { sayChar(line.charAt(i)); } // if is normal char
+			else if (nextChar == 1) { sayChar(line.charAt(i)); sayChar(line.charAt(i+1)); i = i + 2; } // move this test to the findPause method!!
 			else if (nextChar == -1) { System.out.print(line.charAt(i)); }
 			else {
 				System.out.print(line.charAt(i));

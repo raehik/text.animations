@@ -9,7 +9,7 @@ public class Tests {
 		//Computer computer1 = new Computer(20, 0);
 		//computer1.type("Hello, I am a computer.");
 		Speaker speaker1 = new Speaker(400);
-		speaker1.sayNew("Hiya! I'm a^800^ speaker.");
+		speaker1.sayNew("Hiya! I'm a^^ speaker.");
 	}
 
 }
