@@ -1,14 +1,15 @@
 package text.animations;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class Tests {
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		//Computer computer1 = new Computer(20, 0);
+		//computer1.type("Hello, I am a computer.");
+		Speaker speaker1 = new Speaker(400);
+		speaker1.sayNew("Hiya! I'm a^800^ speaker.");
 	}
 
 }

@@ -4,7 +4,7 @@ public class Speaker {
 	private int pause;
 	
 	public Speaker(int pause) {
-		this.pause = pause;
+		this.setPause(pause);
 	}
 	
 	public int getPause() {
@@ -15,11 +15,37 @@ public class Speaker {
 		this.pause = pause;
 	}
 	
-	public void say(String line) {
-		this.printCharByCharSpecifyTimes(line);
+	public void sayNew(String line) {
+		for (int i = 0; i < line.length(); i++) {
+			int nextChar = findPause(line.substring(i));
+			if (nextChar == 0) { sayChar(line.charAt(i)); }
+			else if (nextChar == -1) { System.out.print(line.charAt(i)); }
+			else {
+				System.out.print(line.charAt(i));
+				sleepFor(Integer.parseInt(line.substring(i+2, i + 1 + nextChar)));
+				i = i + 1 + nextChar;
+			}
+		}
 	}
 	
-	private void printCharByCharSpecifyTimes(String line) {
+	public void sayOld(String line) {
+		sayWithSpecifiedPauses(line);
+	}
+	
+	private void sayChar(char c) {
+		System.out.print(c);
+		sleepFor(this.pause);
+	}
+	
+	private int findPause(String substr) {
+		if (substr.length() < 2) { return -1; }
+		if (substr.charAt(1) == '^') {
+			return numOfBetweenChars(substr.substring(2));
+		}
+		else { return 0; } // regular char
+	}
+	
+	private void sayWithSpecifiedPauses(String line) {
 		for (int i=0; i<line.length(); i++) {
 			System.out.print(line.charAt(i)); // print char
 			int nextChar = checkNextChar(line, i); // do tests on next char
@@ -45,7 +71,8 @@ public class Speaker {
 		return 0; // regular char
 	}
 	
-	private void sleepFor(int time) {
+	
+	public void sleepFor(int time) {
 		try {
 			Thread.sleep(time);
 		} catch (InterruptedException e) {
@@ -53,7 +80,6 @@ public class Speaker {
 		}
 	}
 
-	
 	private int numOfBetweenChars(String str) {
 		return str.indexOf('^')+1;
 	}
