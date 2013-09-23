@@ -55,3 +55,9 @@ public class Speaker {
 		}
 	}
 }
+// http://docs.oracle.com/javase/tutorial/java/javaOO/classvars.html
+// please make sleepFor, numOfBetweenChars, and findPause static.
+// also, I need a method to print a character -without- the pause.
+// also, move this entirely over to Python.
+
+// later, try all this in a GUI so that we can do fancy cursor rewriting etc.
