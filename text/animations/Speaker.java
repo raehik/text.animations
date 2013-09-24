@@ -29,7 +29,7 @@ public class Speaker {
 		}
 	}
 
-	private int findPause(String substr) {
+	private int static findPause(String substr) {
 		if (substr.length() < 2) { return -1; }
 		if (substr.charAt(1) == '^') {
 			return numOfBetweenChars(substr.substring(2));
@@ -37,7 +37,7 @@ public class Speaker {
 		else { return 0; } // regular char
 	}
 	
-	private int numOfBetweenChars(String str) {
+	private int static numOfBetweenChars(String str) {
 		return str.indexOf('^')+1;
 	}
 	
@@ -47,7 +47,7 @@ public class Speaker {
 	}
 	
 	
-	public void sleepFor(int time) {
+	public void static sleepFor(int time) {
 		try {
 			Thread.sleep(time);
 		} catch (InterruptedException e) {
@@ -56,8 +56,5 @@ public class Speaker {
 	}
 }
 // http://docs.oracle.com/javase/tutorial/java/javaOO/classvars.html
-// please make sleepFor, numOfBetweenChars, and findPause static.
-// also, I need a method to print a character -without- the pause.
-// also, move this entirely over to Python.
 
 // later, try all this in a GUI so that we can do fancy cursor rewriting etc.
